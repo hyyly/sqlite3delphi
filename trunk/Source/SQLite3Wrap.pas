@@ -1,14 +1,9 @@
 {
-  SQLite3 complete API translation and simple wrapper for Delphi and FreePascal
+  $Id$
 
-  ------------------------------------------------------------------------------
-
-  Copyright © 2010 IndaSoftware Inc. All rights reserved.
-
-  http://www.indasoftware.com/
+  Complete SQLite3 API translation and simple wrapper for Delphi and FreePascal
+  Copyright © 2010 IndaSoftware Inc. and contributors. All rights reserved.
   http://www.indasoftware.com/fordev/sqlite3/
-
-  ------------------------------------------------------------------------------
 
   SQLite is a software library that implements a self-contained, serverless,
   zero-configuration, transactional SQL database engine. The source code for
@@ -16,14 +11,18 @@
   commercial or private. SQLite is the most widely deployed SQL database engine
   in the world.
 
-  This SQLite3 API translation for Delphi and FreePascal is freeware. You are
-  free to use it in any kind of application as well as redistribute the source
-  code in original form, provided the distribution package is not modified.
+  This package contains complete SQLite3 API translation for Delphi and
+  FreePascal, as well as a simple Unicode-enabled object wrapper to simplify
+  the use of this database engine.
 
-  This translation is provided "as is". No warranty of any kind is expressed or
-  implied. You use it at your own risk. The author will not be liable for data
-  loss, damages, loss of profits or any other kind of loss while using or
-  misusing this software.
+  The contents of this file are used with permission, subject to the Mozilla
+  Public License Version 1.1 (the "License"); you may not use this file except
+  in compliance with the License. You may obtain a copy of the License at
+  http://www.mozilla.org/MPL/MPL-1.1.html
+
+  Software distributed under the License is distributed on an "AS IS" basis,
+  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+  the specific language governing rights and limitations under the License.
 }
 
 {
