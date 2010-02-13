@@ -16,6 +16,9 @@ DESCRIPTION
   FreePascal, as well as a simple Unicode-enabled object wrapper to simplify
   the use of this database engine.
 
+
+COMPATIBILITY
+=============
   Compatible with Delphi 6-2010 and FreePascal [...].
 
 
