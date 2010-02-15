@@ -19,15 +19,33 @@ DESCRIPTION
 
 COMPATIBILITY
 =============
-  Compatible with Delphi 6-2010 and FreePascal [...].
+  Compatible with Delphi/C++Builder 6-2010 and FreePascal/Lazarus.
 
 
-HOW TO USE
-==========
-  At first, add the Source folder to the Library Path of the IDE. Select
-  Tools > Options, select Library [...]
-  
-  You should distribute the shared library with your program.
+INSTALLATION AND USAGE NOTES
+============================
+  Unzip the package somewhere on your hard drive. Now you need to add the
+  Source folder to your IDE options:
+
+  If you use Delphi 6-7 or C++Builder 6, select Tools > Environment Options
+  on the menu bar, then go to the Library tab and add the full path of this
+  package's Source directory to the Library Path.
+
+  If you use Delphi 2005 and up, or C++Builder 2006 and up, select
+  Tools > Options on the menu bar, then select
+  Environment Options > Delphi Options > Library - Win32, and add the full path
+  of this package's Source directory to the Library Path.
+
+  If you use Lazarus, select Environment > Options on the menu bar, then select
+  CodeTools, and add the full path of this package's Source directory to the
+  Search Path ("Additional source search path for all projects").
+
+  When using this translation in your projects, add the SQLite3 unit to the uses
+  clause of your source file, if you want to use SQLite3 API, and the
+  SQLite3Wrap unit, if you want to use the accompanying wrapper.
+
+  Do not forget to distribute the shared library (sqlite3.dll for Windows,
+  sqlite3.so for Linux) with your program.
 
 
 CONTACT INFO, LINKS
