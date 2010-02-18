@@ -52,6 +52,7 @@ type
     FHandle: PSQLite3;
     FStatementList: TList;
     FBlobHandlerList: TList;
+    FTransactionOpen: Boolean;
     procedure Check(const ErrCode: Integer);
     procedure CheckHandle;
   public
@@ -66,7 +67,12 @@ type
     function Prepare(const SQL: WideString): TSQLite3Statement;
     function BlobOpen(const Table, Column: WideString; const RowID: Int64; const WriteAccess: Boolean = True): TSQLite3BlobHandler;
 
+    procedure BeginTransaction;
+    procedure Commit;
+    procedure Rollback;
+
     property Handle: PSQLite3 read FHandle;
+    property TransactionOpen: Boolean read FTransactionOpen;
   end;
 
   { TSQLite3Statement class }
@@ -140,8 +146,21 @@ uses SQLite3Utils;
 resourcestring
   SErrorMessage = 'SQLite3 error: %s';
   SDatabaseNotConnected = 'SQLite3 error: database is not connected.';
+  STransactionAlreadyOpen = 'Transaction is already opened.';
+  SNoTransactionOpen = 'No transaction is open';
 
 { TSQLite3Database }
+
+procedure TSQLite3Database.BeginTransaction;
+begin
+  if not FTransactionOpen then
+  begin
+    Execute('BEGIN TRANSACTION;');
+    FTransactionOpen := True;
+  end
+  else
+    raise ESQLite3Error.Create(STransactionAlreadyOpen);
+end;
 
 function TSQLite3Database.BlobOpen(const Table, Column: WideString;
   const RowID: Int64; const WriteAccess: Boolean): TSQLite3BlobHandler;
@@ -167,6 +186,8 @@ var
 begin
   if FHandle <> nil then
   begin
+    if FTransactionOpen then
+      Rollback;
     // Delete all statements
     for I := FStatementList.Count - 1 downto 0 do
       TSQLite3Statement(FStatementList[I]).Free;
@@ -176,6 +197,17 @@ begin
     sqlite3_close(FHandle);
     FHandle := nil;
   end;
+end;
+
+procedure TSQLite3Database.Commit;
+begin
+  if FTransactionOpen then
+  begin
+    Execute('COMMIT;');
+    FTransactionOpen := False;
+  end
+  else
+    raise ESQLite3Error.Create(SNoTransactionOpen);
 end;
 
 constructor TSQLite3Database.Create;
@@ -214,6 +246,17 @@ end;
 function TSQLite3Database.Prepare(const SQL: WideString): TSQLite3Statement;
 begin
   Result := TSQLite3Statement.Create(Self, SQL);
+end;
+
+procedure TSQLite3Database.Rollback;
+begin
+  if FTransactionOpen then
+  begin
+    Execute('ROLLBACK;');
+    FTransactionOpen := False;
+  end
+  else
+    raise ESQLite3Error.Create(SNoTransactionOpen);
 end;
 
 { TSQLite3Statement }
