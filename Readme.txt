@@ -54,9 +54,15 @@ CONTACT INFO, LINKS
   IndaSoftware web site:       http://www.indasoftware.com/
   Contact us:                  support@indasoftware.com
 
-  Project web site:            http://www.indasoftware.com/fordev/sqlite3/
+  Project web site:            http://www.indasoftware.com/sqlite/
   Project forum:               http://www.indasoftware.com/forums/?showforum=12
   Project page on Google Code: http://code.google.com/p/sqlite3delphi/
+
+
+CONTRIBUTORS
+============
+  Yury Plashenkov              http://www.plashenkov.com/
+  Marek Mauder                 http://galfar.vevb.net/
 
 
 ================================================================================
