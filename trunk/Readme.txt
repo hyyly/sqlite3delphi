@@ -1,6 +1,6 @@
 Complete SQLite3 API translation and simple wrapper for Delphi and FreePascal
 
-Version: 1.0 (February 10, 2010)
+Version: 1.0 (March 10, 2010)
 Version of SQLite: 3.6.22
 
 
